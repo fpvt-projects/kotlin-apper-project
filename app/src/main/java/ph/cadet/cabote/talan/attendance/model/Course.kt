@@ -10,15 +10,15 @@ class Course {
     var courseName = ""
 
     @SerializedName("courseStartTime")
-    var courseStartTime : LocalTime
+    var courseStartTime = ""
 
     @SerializedName("courseEndTime")
-    var courseEndTime : LocalTime
+    var courseEndTime = ""
 
     @SerializedName("courseClass")
     var courseClass = ""
 
-    constructor(courseID: String, courseName: String, courseStartTime: LocalTime, courseEndTime: LocalTime, courseClass: String){
+    constructor(courseID: String, courseName: String, courseStartTime: String, courseEndTime: String, courseClass: String){
         this.courseID = courseID
         this.courseName = courseName
         this.courseStartTime = courseStartTime
