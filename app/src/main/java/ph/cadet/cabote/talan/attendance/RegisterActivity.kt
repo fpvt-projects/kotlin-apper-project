@@ -69,6 +69,7 @@ class RegisterActivity : AppCompatActivity() {
 
                         add["Name"] = registerNameValue
                         add["Email"] = registerPasswordValue
+                        add["UserID"] = FirebaseAuth.getInstance().currentUser?.uid.toString()
 
                         db.collection("users").add(add)
                             .addOnSuccessListener {
