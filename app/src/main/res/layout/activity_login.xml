@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/email_layout"
-            app:layout_constraintBottom_toTopOf="@id/changePassword"
+            app:layout_constraintBottom_toTopOf="@id/registerBtn"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:padding="16dp">
@@ -51,14 +51,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/changePassword"
+            android:id="@+id/registerBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/password_layout"
             app:layout_constraintBottom_toTopOf="@id/loginBtn"
-            android:hint="Change Password"
+            android:hint="Register Here"
             android:textColorHint="#1F4690"
             android:layout_marginTop="15dp"/>
 
@@ -67,7 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:text="Login"
-            app:layout_constraintTop_toBottomOf="@id/changePassword"
+            app:layout_constraintTop_toBottomOf="@id/registerBtn"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toTopOf="parent"
