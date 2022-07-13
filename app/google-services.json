@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "178096127918",
+    "project_id": "kotlin-apper-project",
+    "storage_bucket": "kotlin-apper-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:178096127918:android:3ec5afe7ca00944955923f",
+        "android_client_info": {
+          "package_name": "ph.cadet.cabote.talan.attendance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "178096127918-v1sdnte8c7ihm94v1laapvbtv6es847f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ph.cadet.cabote.talan.attendance",
+            "certificate_hash": "1b2b722325066fd9952f485963f5ecbcdf93642f"
+          }
+        },
+        {
+          "client_id": "178096127918-ht9dgg0u5sclcjbg9fk8kfgi1nbcat9e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzyqI0GTziCDtfVAXpG6-C4qXvJJxiheE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "178096127918-ht9dgg0u5sclcjbg9fk8kfgi1nbcat9e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
