@@ -73,15 +73,9 @@ class RegisterActivity : AppCompatActivity() {
 
                         db.collection("users").add(add)
                             .addOnSuccessListener {
-
+                                Toast.makeText(this, "Register Success", Toast.LENGTH_SHORT).show()
+                                startActivity(Intent(this, LoginActivity::class.java ))
                             }
-                            .addOnFailureListener {
-
-                            }
-
-                        //TODO DOCUMENT-ADD-FIRE-STORE
-                        Toast.makeText(this, "Register Success", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, LoginActivity::class.java ))
                     }
                     .addOnFailureListener {
                         Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()

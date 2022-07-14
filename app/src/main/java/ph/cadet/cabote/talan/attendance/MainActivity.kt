@@ -1,24 +1,18 @@
 package ph.cadet.cabote.talan.attendance
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import ph.cadet.cabote.talan.attendance.adapter.CourseAdapter
 import ph.cadet.cabote.talan.attendance.databinding.ActivityMainBinding
 import ph.cadet.cabote.talan.attendance.model.Course
-import java.text.DateFormat.getTimeInstance
-import java.time.Clock
-import java.time.LocalTime
 
 
 class MainActivity : AppCompatActivity() {
@@ -34,10 +28,13 @@ class MainActivity : AppCompatActivity() {
         getInstructorName()
         getCourses()
 
+        //ADD-COURSE-FUNCTION
         binding.buttonAddCourse.setOnClickListener{
             startActivity(Intent(this, AddCourseActivity::class.java))
         }
 
+
+        //CHANGE-PASSWORD-FUNCTION
         binding.changePasswordBtn.setOnClickListener {
             val view :  View = layoutInflater.inflate(R.layout.activity_change_password, null)
             val modal = BottomSheetDialog(this)
@@ -47,6 +44,10 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        //LOGOUT-FUNCTION
+        binding.logoutBtn.setOnClickListener{
+            Firebase.auth.signOut()
+        }
     }
 
     private fun getInstructorName(){
