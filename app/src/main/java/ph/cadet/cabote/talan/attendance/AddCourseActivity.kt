@@ -147,7 +147,6 @@ class AddCourseActivity : AppCompatActivity() {
                     "Please Enter Class/ Block",
                     Toast.LENGTH_SHORT
                 ).show()
-
             }
             else -> {
 
