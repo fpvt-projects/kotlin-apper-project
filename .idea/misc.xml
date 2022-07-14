@@ -6,7 +6,11 @@
         <entry key="app/src/main/res/layout/activity_add_course.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_addcourse.xml" value="0.14583333333333334" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1716485507246377" />
+<<<<<<< HEAD
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.13333333333333333" />
+=======
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+>>>>>>> main
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.165" />
         <entry key="app/src/main/res/layout/class_view.xml" value="0.22644927536231885" />
         <entry key="app/src/main/res/layout/course_view.xml" value="0.1" />
