@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -34,6 +36,15 @@ class MainActivity : AppCompatActivity() {
 
         binding.buttonAddCourse.setOnClickListener{
             startActivity(Intent(this, AddCourseActivity::class.java))
+        }
+
+        binding.changePasswordBtn.setOnClickListener {
+            val view :  View = layoutInflater.inflate(R.layout.activity_change_password, null)
+            val modal = BottomSheetDialog(this)
+
+            modal.setContentView(view)
+            modal.show()
+
         }
 
     }
