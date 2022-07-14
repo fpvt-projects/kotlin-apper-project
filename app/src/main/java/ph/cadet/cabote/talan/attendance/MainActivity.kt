@@ -3,6 +3,7 @@ package ph.cadet.cabote.talan.attendance
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -18,12 +19,19 @@ import ph.cadet.cabote.talan.attendance.model.Course
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var recyclerViewAdapter: CourseAdapter
-    private var courses = ArrayList<Course>()
+    private var courseList = ArrayList<Course>()
+
+    private val id = FirebaseAuth.getInstance().currentUser?.uid.toString()
+    private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate((layoutInflater))
         setContentView(binding.root)
+
+        recyclerViewAdapter = CourseAdapter(applicationContext, courseList)
+        binding.recyclerviewCourses.adapter = recyclerViewAdapter
+        binding.recyclerviewCourses.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
         getInstructorName()
         getCourses()
@@ -32,7 +40,6 @@ class MainActivity : AppCompatActivity() {
         binding.buttonAddCourse.setOnClickListener{
             startActivity(Intent(this, AddCourseActivity::class.java))
         }
-
 
         //CHANGE-PASSWORD-FUNCTION
         binding.changePasswordBtn.setOnClickListener {
@@ -51,8 +58,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getInstructorName(){
-        val id = FirebaseAuth.getInstance().currentUser?.uid.toString()
-        val db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
         db.collection("users").whereEqualTo("UserID", id).get()
             .addOnSuccessListener { users ->
@@ -63,23 +68,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getCourses() {
-        courses.add(Course("CourseID", "CourseName", "Course Start", "Course End", "CourseClass"))
-        courses.add(Course("CourseID2", "CourseName2", "Course Start", "Course End", "CourseClass2"))
-        courses.add(Course("CourseID", "CourseName", "Course Start", "Course End", "CourseClass"))
-        courses.add(Course("CourseID2", "CourseName2", "Course Start", "Course End", "CourseClass2"))
-        courses.add(Course("CourseID", "CourseName", "Course Start", "Course End", "CourseClass"))
-        courses.add(Course("CourseID2", "CourseName2", "Course Start", "Course End", "CourseClass2"))
-        courses.add(Course("CourseID", "CourseName", "Course Start", "Course End", "CourseClass"))
-        courses.add(Course("CourseID2", "CourseName2", "Course Start", "Course End", "CourseClass2"))
-        courses.add(Course("CourseID", "CourseName", "Course Start", "Course End", "CourseClass"))
-        courses.add(Course("CourseID2", "CourseName2", "Course Start", "Course End", "CourseClass2"))
-        courses.add(Course("CourseID", "CourseName", "Course Start", "Course End", "CourseClass"))
-        courses.add(Course("CourseID2", "CourseName2", "Course Start", "Course End", "CourseClass2"))
+        db.collection("courses").whereEqualTo("userID", id).get()
+            .addOnSuccessListener { courses ->
+                for (course in courses) {
+                    courseList.add(Course(course.data.get("courseID").toString(),
+                        course.data.get("courseName").toString(),
+                        course.data.get("courseStartTime").toString(),
+                        course.data.get("courseEndTime").toString(),
+                        course.data.get("courseClass").toString()))
+                }
+            }
 
-        recyclerViewAdapter = CourseAdapter(applicationContext, courses)
+        recyclerViewAdapter = CourseAdapter(applicationContext, courseList)
         binding.recyclerviewCourses.adapter = recyclerViewAdapter
-
         binding.recyclerviewCourses.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+
     }
     override fun onStart() {
         super.onStart()

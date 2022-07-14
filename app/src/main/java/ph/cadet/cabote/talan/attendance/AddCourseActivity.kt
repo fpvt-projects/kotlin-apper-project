@@ -165,7 +165,8 @@ class AddCourseActivity : AppCompatActivity() {
                             "Course ${courseEntry.get("courseID")} successfully added.",
                             Toast.LENGTH_SHORT
                         ).show()
-                        startActivity(Intent(this, MainActivity::class.java ))
+                        startActivity(Intent(this, MainActivity::class.java))
+
                     }
             }
         }
