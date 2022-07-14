@@ -8,15 +8,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 import ph.cadet.cabote.talan.attendance.adapter.CourseAdapter
 import ph.cadet.cabote.talan.attendance.databinding.ActivityMainBinding
 import ph.cadet.cabote.talan.attendance.model.Course
 
 
 class MainActivity : AppCompatActivity() {
+
+    private var mAuth = FirebaseAuth.getInstance()
     private lateinit var binding: ActivityMainBinding
     private lateinit var recyclerViewAdapter: CourseAdapter
     private var courseList = ArrayList<Course>()
@@ -53,7 +53,9 @@ class MainActivity : AppCompatActivity() {
 
         //LOGOUT-FUNCTION
         binding.logoutBtn.setOnClickListener{
-            Firebase.auth.signOut()
+            mAuth.signOut()
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 
