@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity() {
         binding.buttonAddCourse.setOnClickListener{
             startActivity(Intent(this, AddCourseActivity::class.java))
         }
-
     }
 
     private fun getInstructorName(){
