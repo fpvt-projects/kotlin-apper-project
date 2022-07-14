@@ -20,6 +20,12 @@ class CourseAdapter(
         return CourseViewHolder(courseBinding)
     }
 
+    fun setCourses(newCourses:ArrayList<Course>){
+        courses.clear()
+        courses.addAll(newCourses)
+        notifyDataSetChanged()
+    }
+
     inner class CourseViewHolder(private val courseBinding: CourseViewBinding) :
         RecyclerView.ViewHolder(courseBinding.root) {
         fun bindCourses(data: Course) {

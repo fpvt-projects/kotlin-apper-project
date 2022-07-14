@@ -29,12 +29,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate((layoutInflater))
         setContentView(binding.root)
 
+        getInstructorName()
+        getCourses()
+
         recyclerViewAdapter = CourseAdapter(applicationContext, courseList)
         binding.recyclerviewCourses.adapter = recyclerViewAdapter
         binding.recyclerviewCourses.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
-        getInstructorName()
-        getCourses()
 
         //ADD-COURSE-FUNCTION
         binding.buttonAddCourse.setOnClickListener{
@@ -76,13 +77,16 @@ class MainActivity : AppCompatActivity() {
                         course.data.get("courseStartTime").toString(),
                         course.data.get("courseEndTime").toString(),
                         course.data.get("courseClass").toString()))
+
+                    Toast.makeText(
+                        this@MainActivity,
+                        course.data.toString(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    recyclerViewAdapter.setCourses(courseList)
                 }
             }
-
-        recyclerViewAdapter = CourseAdapter(applicationContext, courseList)
-        binding.recyclerviewCourses.adapter = recyclerViewAdapter
-        binding.recyclerviewCourses.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-
     }
     override fun onStart() {
         super.onStart()
