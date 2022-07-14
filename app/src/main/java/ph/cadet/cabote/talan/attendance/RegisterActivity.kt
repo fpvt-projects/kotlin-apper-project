@@ -56,30 +56,43 @@ class RegisterActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
 
-                } else -> {
+                }
+
+                else -> {
 
                 var registerEmailValue = registerEmailInput.text.toString().trim()
                 var registerPasswordValue = registerPasswordInput.text.toString().trim()
                 var registerNameValue = registerName.text.toString()
+                var registerConfirmPasswordValue = registerPasswordConfirmation.text.toString().trim()
 
-                auth.createUserWithEmailAndPassword(registerEmailValue, registerPasswordValue)
-                    .addOnSuccessListener {
-
-                        val add = HashMap<String, Any>()
-
-                        add["Name"] = registerNameValue
-                        add["Email"] = registerPasswordValue
-                        add["UserID"] = FirebaseAuth.getInstance().currentUser?.uid.toString()
-
-                        db.collection("users").add(add)
+                    if(registerPasswordValue == registerConfirmPasswordValue) {
+                        auth.createUserWithEmailAndPassword(registerEmailValue, registerPasswordValue)
                             .addOnSuccessListener {
-                                Toast.makeText(this, "Register Success", Toast.LENGTH_SHORT).show()
-                                startActivity(Intent(this, LoginActivity::class.java ))
+
+                                val add = HashMap<String, Any>()
+
+                                add["Name"] = registerNameValue
+                                add["Email"] = registerPasswordValue
+                                add["UserID"] = FirebaseAuth.getInstance().currentUser?.uid.toString()
+
+                                db.collection("users").add(add)
+                                    .addOnSuccessListener {
+                                        Toast.makeText(this, "Register Success", Toast.LENGTH_SHORT).show()
+                                        startActivity(Intent(this, LoginActivity::class.java ))
+                                    }
                             }
+                            .addOnFailureListener {
+                                Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
+                            }
+                    } else {
+                        Toast.makeText(
+                            this@RegisterActivity,
+                            "Password Does not Match",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
-                    .addOnFailureListener {
-                        Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
-                    }
+
+
             }
             }
         }

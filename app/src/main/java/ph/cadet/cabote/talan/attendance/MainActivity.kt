@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
 
                     Toast.makeText(
                         this@MainActivity,
-                        course.data.toString(),
+                        course.data.get("courseName").toString(),
                         Toast.LENGTH_SHORT
                     ).show()
 
