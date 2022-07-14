@@ -3,6 +3,7 @@ package ph.cadet.cabote.talan.attendance.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import ph.cadet.cabote.talan.attendance.databinding.CourseViewBinding
 import ph.cadet.cabote.talan.attendance.model.Course
@@ -31,6 +32,9 @@ class CourseAdapter(
         fun bindCourses(data: Course) {
             courseBinding.textViewCourseID.text = data.courseID
             courseBinding.textViewCourseName.text = data.courseName
+            courseBinding.textViewCourseStartTime.text = data.courseStartTime
+            courseBinding.textViewCourseEndTime.text = data.courseEndTime
+            courseBinding.textViewCourseClass.text = data.courseClass
         }
     }
 
