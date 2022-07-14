@@ -3,13 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Francis Paolo/AndroidStudioProjects/kotlin-apper-project/app/src/main/res/layout/activity_change_password.xml" value="0.5541666666666667" />
-        <entry key="..\:/Users/Francis Paolo/AndroidStudioProjects/kotlin-apper-project/app/src/main/res/layout/activity_login.xml" value="0.5541666666666667" />
-        <entry key="..\:/Users/Francis Paolo/AndroidStudioProjects/kotlin-apper-project/app/src/main/res/layout/activity_main.xml" value="0.4786458333333333" />
-        <entry key="..\:/Users/Francis Paolo/AndroidStudioProjects/kotlin-apper-project/app/src/main/res/layout/activity_register.xml" value="0.5541666666666667" />
+        <entry key="app/src/main/res/layout/activity_add_course.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_addcourse.xml" value="0.14583333333333334" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1716485507246377" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.24635416666666668" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/class_view.xml" value="0.22644927536231885" />
+        <entry key="app/src/main/res/layout/course_view.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/instructor_view.xml" value="0.1" />
       </map>
     </option>
   </component>
