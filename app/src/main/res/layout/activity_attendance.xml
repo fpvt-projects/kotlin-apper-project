@@ -6,6 +6,164 @@
     android:layout_height="match_parent"
     tools:context=".AddClassActivity">
 
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical"-->
+<!--        android:weightSum="10">-->
+
+<!--        <FrameLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="160dp"-->
+<!--            android:layout_weight="0.1"-->
+<!--            android:background="@color/thirdColor"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:orientation="vertical"-->
+<!--                android:padding="@dimen/padding">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textView_courseClass"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:textAllCaps="true"-->
+<!--                    android:text="TextView"-->
+<!--                    app:layout_constraintRight_toRightOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/linearLayout_courseDescription" />-->
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/linearLayout_courseDescription"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="60dp"-->
+<!--                    android:background="#1A4D2E"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/textView_courseID"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:textColor="#fff"-->
+<!--                        android:text="TextView"-->
+<!--                        android:textSize="15dp"-->
+<!--                        android:gravity="center_vertical"-->
+<!--                        android:textAllCaps="true"-->
+<!--                        android:fontFamily="@font/robotothin"-->
+<!--                        android:layout_weight="1"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintRight_toRightOf="parent"/>-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/textView_courseName"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:text="TextView"-->
+<!--                        android:gravity="center_vertical"-->
+<!--                        android:textColor="#fff"-->
+<!--                        android:textSize="18dp"-->
+<!--                        android:fontFamily="@font/robotomedium"-->
+<!--                        android:layout_weight="1"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintRight_toRightOf="parent"/>-->
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/linearLayout_courseSchedule"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:background="#FAF3E3"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/textView_start"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:text="Start:"-->
+<!--                        android:fontFamily="@font/robotomedium"-->
+<!--                        android:textAllCaps="true"-->
+<!--                        android:gravity="center"-->
+<!--                        android:layout_weight="1"-->
+<!--                        app:layout_constraintRight_toRightOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"/>-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/textView_courseStartTime"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:gravity="center_vertical"-->
+<!--                        android:layout_weight="1"-->
+<!--                        app:layout_constraintRight_toRightOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"/>-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/textView_end"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:text="End:"-->
+<!--                        android:textAllCaps="true"-->
+<!--                        android:fontFamily="@font/robotomedium"-->
+<!--                        android:gravity="center"-->
+<!--                        android:layout_weight="1"-->
+<!--                        app:layout_constraintRight_toRightOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"/>-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/textView_courseEndTime"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:gravity="center_vertical"-->
+<!--                        android:layout_weight="1"-->
+<!--                        app:layout_constraintRight_toRightOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"/>-->
+
+<!--                </LinearLayout>-->
+<!--            </LinearLayout>-->
+<!--        </FrameLayout>-->
+
+<!--        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout-->
+<!--            android:id="@+id/refresh"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/recyclerview_classes"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="9" />-->
+<!--        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
+
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:orientation="vertical"-->
+<!--        android:padding="10dp">-->
+
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/button_scanQR"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="8dp"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            android:contentDescription="@string/app_name"-->
+<!--            android:padding="4dp"-->
+<!--            android:src="@drawable/camera"-->
+<!--            app:tint="@color/white" />-->
+
+<!--    </LinearLayout>-->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,7 +172,7 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="100dp"
             android:layout_weight="0.1"
             android:background="@color/thirdColor"
             android:orientation="vertical">
@@ -24,107 +182,75 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:orientation="vertical"
+                android:background="@color/secondaryColor"
                 android:padding="@dimen/padding">
 
                 <TextView
-                    android:id="@+id/textView_courseClass"
+                    android:id="@+id/textView_classBlock"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center_vertical"
-                    android:textAllCaps="true"
-                    android:text="TextView"
+                    android:layout_height="match_parent"
+                    android:background="#1A4D2E"
+                    android:layout_weight="1"
+                    android:paddingLeft="5dp"
+                    android:textColor="#ffff"
+                    android:gravity = "center_vertical"
+                    android:text="Block Section"
+                    android:fontFamily="@font/robotomedium"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/linearLayout_courseDescription" />
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <LinearLayout
-                    android:id="@+id/linearLayout_courseDescription"
+                    android:id="@+id/linearLayout_date"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:background="#1A4D2E"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="#FAF3E3"
+                    android:weightSum="2">
 
                     <TextView
-                        android:id="@+id/textView_courseID"
+                        android:id="@+id/textView_classDate"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textColor="#fff"
-                        android:text="TextView"
-                        android:textSize="15dp"
-                        android:gravity="center_vertical"
-                        android:textAllCaps="true"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Date"
                         android:fontFamily="@font/robotothin"
-                        android:layout_weight="1"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"/>
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
 
-                    <TextView
-                        android:id="@+id/textView_courseName"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="TextView"
-                        android:gravity="center_vertical"
-                        android:textColor="#fff"
-                        android:textSize="18dp"
-                        android:fontFamily="@font/robotomedium"
-                        android:layout_weight="1"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"/>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linearLayout_courseSchedule"
+                    android:id="@+id/linearLayout_total"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="#FAF3E3"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
 
                     <TextView
-                        android:id="@+id/textView_start"
+                        android:id="@+id/textView_totalAttendees"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Start:"
-                        android:fontFamily="@font/robotomedium"
-                        android:textAllCaps="true"
-                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:text="Students-Attended:"
+                        android:background="#FAF3E3"
                         android:layout_weight="1"
+                        android:fontFamily="@font/robotothin"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintStart_toStartOf="parent"/>
 
                     <TextView
-                        android:id="@+id/textView_courseStartTime"
+                        android:id="@+id/textView_total"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
+                        android:layout_height="wrap_content"
+                        android:text="Students-Attended:"
+                        android:background="#FAF3E3"
                         android:layout_weight="1"
+                        android:fontFamily="@font/robotothin"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"/>
-
-                    <TextView
-                        android:id="@+id/textView_end"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="End:"
-                        android:textAllCaps="true"
-                        android:fontFamily="@font/robotomedium"
-                        android:gravity="center"
-                        android:layout_weight="1"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"/>
-
-                    <TextView
-                        android:id="@+id/textView_courseEndTime"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:layout_weight="1"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"/>
-
+                        app:layout_constraintStart_toStartOf="parent" />
                 </LinearLayout>
             </LinearLayout>
+
         </FrameLayout>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
