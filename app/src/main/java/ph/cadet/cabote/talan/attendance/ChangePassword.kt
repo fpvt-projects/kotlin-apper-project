@@ -7,6 +7,8 @@ import android.widget.Toast
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import ph.cadet.cabote.talan.attendance.databinding.ActivityChangePasswordBinding
 import ph.cadet.cabote.talan.attendance.databinding.ActivityLoginBinding
 
@@ -32,24 +34,6 @@ class ChangePassword : AppCompatActivity() {
 
     //FUNCTION-FOR-CHANGE-PASSWORD
     private fun changePassword() {
-//        if (binding.oldPasswordInput.text.isNotEmpty() &&
-//            binding.newPasswordInput.text.isNotEmpty() &&
-//            binding.confirmNewPasswordInput.text.isNotEmpty()
-//        ) {
-//
-//            if (newPassword == confirmNewPassword) {
-//                Toast.makeText(
-//                    this@ChangePassword,
-//                    "Some Credentials Missing",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//            } else {
-//                Toast.makeText(
-//                    this@ChangePassword,
-//                    "Some Credentials Missing",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//            }
-//        }
+        Firebase.auth.sendPasswordResetEmail(currentPassword)
     }
 }
