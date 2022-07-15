@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private var mAuth = FirebaseAuth.getInstance()
     private lateinit var binding: ActivityMainBinding
     private lateinit var recyclerViewAdapter: CourseAdapter
+    private lateinit var courseList : ArrayList<Course>
     private val id = FirebaseAuth.getInstance().currentUser?.uid.toString()
     private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
@@ -72,7 +73,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getCourses() {
-        var courseList = ArrayList<Course>()
+        courseList = ArrayList()
         db.collection("courses").whereEqualTo("userID", id).get()
             .addOnSuccessListener { courses ->
                 for (course in courses) {
@@ -85,6 +86,12 @@ class MainActivity : AppCompatActivity() {
                 recyclerViewAdapter = CourseAdapter(applicationContext, courseList)
                 binding.recyclerviewCourses.adapter = recyclerViewAdapter
                 binding.recyclerviewCourses.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+
+                recyclerViewAdapter.onItemClick = {
+                    val intent = Intent(this, CourseActivity::class.java)
+                    intent.putExtra("course", it)
+                    startActivity(intent)
+                }
             }
     }
     override fun onStart() {

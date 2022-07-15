@@ -22,11 +22,11 @@ import android.widget.Toast
 
 class AddCourseActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddCourseBinding
-    private var courseList = ArrayList<String>()
+    //private var courseList = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAddCourseBinding.inflate((layoutInflater))
+        binding = ActivityAddCourseBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         /*
@@ -52,7 +52,7 @@ class AddCourseActivity : AppCompatActivity() {
 
         binding.textinputAddStartTime.setOnClickListener {
             val calendarTime = Calendar.getInstance()
-            val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
+            val setTimeListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
                 calendarTime.set(Calendar.HOUR_OF_DAY, hour)
                 calendarTime.set(Calendar.MINUTE, minute)
 
@@ -63,7 +63,7 @@ class AddCourseActivity : AppCompatActivity() {
             TimePickerDialog(
                 this,
                 TimePickerDialog.THEME_HOLO_LIGHT,
-                timeSetListener,
+                setTimeListener,
                 calendarTime.get(Calendar.HOUR_OF_DAY),
                 calendarTime.get(Calendar.MINUTE),
                 true
@@ -72,7 +72,7 @@ class AddCourseActivity : AppCompatActivity() {
 
         binding.textinputAddEndTime.setOnClickListener {
             val calendarTime = Calendar.getInstance()
-            val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
+            val setTimeListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
                 calendarTime.set(Calendar.HOUR_OF_DAY, hour)
                 calendarTime.set(Calendar.MINUTE, minute)
 
@@ -82,7 +82,7 @@ class AddCourseActivity : AppCompatActivity() {
             TimePickerDialog(
                 this,
                 TimePickerDialog.THEME_HOLO_LIGHT,
-                timeSetListener,
+                setTimeListener,
                 calendarTime.get(Calendar.HOUR_OF_DAY),
                 calendarTime.get(Calendar.MINUTE),
                 true
@@ -91,6 +91,7 @@ class AddCourseActivity : AppCompatActivity() {
 
     }
 
+    /*
     private fun getCourseID() {
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
@@ -101,6 +102,7 @@ class AddCourseActivity : AppCompatActivity() {
                 }
             }
     }
+    */
 
     fun addCourse(v: View?) {
         var auth = FirebaseAuth.getInstance()

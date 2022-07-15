@@ -13,18 +13,14 @@ class CourseAdapter(
     private var courses: ArrayList<Course>
 ) : RecyclerView.Adapter<CourseAdapter.CourseViewHolder>() {
 
+    var onItemClick : ((Course) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CourseViewHolder {
         val courseBinding = CourseViewBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent, false
             )
         return CourseViewHolder(courseBinding)
-    }
-
-    fun setCourses(newCourses:ArrayList<Course>){
-        courses.clear()
-        courses.addAll(newCourses)
-        notifyDataSetChanged()
     }
 
     inner class CourseViewHolder(private val courseBinding: CourseViewBinding) :
@@ -35,6 +31,10 @@ class CourseAdapter(
             courseBinding.textViewCourseStartTime.text = data.courseStartTime
             courseBinding.textViewCourseEndTime.text = data.courseEndTime
             courseBinding.textViewCourseClass.text = data.courseClass
+
+            itemView.setOnClickListener{
+                onItemClick?.invoke(data)
+            }
         }
     }
 
