@@ -31,7 +31,7 @@ class ClassAdapter (
 
             classBinding.textViewClassBlock.text = data.classBlock
             classBinding.textViewClassDate.text = data.date
-            classBinding.textViewTotal.text = data.totalAttendees.toString()
+            //classBinding.textViewTotal.text = data.totalAttendees.toString()
 
             itemView.setOnClickListener {
                 onItemClick?.invoke(data)

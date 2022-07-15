@@ -45,6 +45,7 @@
 
         </LinearLayout>
 
+        <!--
         <LinearLayout
             android:id="@+id/linearLayout_total"
             android:layout_width="match_parent"
@@ -72,6 +73,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
         </LinearLayout>
+        -->
     </LinearLayout>
 
 
