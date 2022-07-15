@@ -3,6 +3,7 @@ package ph.cadet.cabote.talan.attendance
 import android.Manifest
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -12,18 +13,33 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.budiyev.android.codescanner.*
 import com.budiyev.android.codescanner.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.gson.Gson
 import ph.cadet.cabote.talan.attendance.databinding.ActivityQrscannerBinding
+import ph.cadet.cabote.talan.attendance.model.Classes
+import ph.cadet.cabote.talan.attendance.model.Course
+import ph.cadet.cabote.talan.attendance.model.Student
+import java.util.HashMap
 
 class QRScannerActivity : AppCompatActivity() {
     private lateinit var codeScanner: CodeScanner
     private val PERMISSION_REQUEST_CODE = 200
 
+    private val id = FirebaseAuth.getInstance().currentUser?.uid.toString()
+    private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
+
     private lateinit var binding: ActivityQrscannerBinding
+    private lateinit var classObject: Classes
+    private lateinit var course: Course
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQrscannerBinding.inflate((layoutInflater))
         setContentView(binding.root)
+
+        classObject = intent.getParcelableExtra<Classes>("class")!!
+        course = intent.getParcelableExtra<Course>("course")!!
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
             val scannerView = binding.scannerView
@@ -42,7 +58,33 @@ class QRScannerActivity : AppCompatActivity() {
             // Callbacks
             codeScanner.decodeCallback = DecodeCallback {
                 runOnUiThread {
-                    Toast.makeText(this, "Scan result: ${it.text}", Toast.LENGTH_LONG).show()
+
+                    val studentJSON = it.text.trimIndent()
+
+                    val gson = Gson()
+                    var student = gson.fromJson(studentJSON, Student.StudentInfo::class.java)
+
+                    val studentAttendance = HashMap<String, Any>()
+                    studentAttendance["firstName"] = student.firstName
+                    studentAttendance["lastName"] = student.lastName
+                    studentAttendance["studentEmail"] = student.studentEmail
+                    studentAttendance["studentNumber"] = student.studentNumber
+                    studentAttendance["courseID"] = course.courseID
+                    studentAttendance["date"] = classObject.date
+                    studentAttendance["userID"] = FirebaseAuth.getInstance().currentUser?.uid.toString()
+
+                    db.collection("attendance").add(studentAttendance)
+                        .addOnSuccessListener {
+                            Toast.makeText(
+                                this@QRScannerActivity,
+                                "Successfully Logged Attendance.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            finish()
+                            val intent = Intent(this, AttendanceActivity::class.java)
+                            intent.putExtra("class", classObject)
+                            intent.putExtra("course", course)
+                            startActivity(intent)                        }
                 }
             }
             codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS

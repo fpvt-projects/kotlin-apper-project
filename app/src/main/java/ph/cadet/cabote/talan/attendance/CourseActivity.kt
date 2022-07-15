@@ -79,6 +79,7 @@ class CourseActivity : AppCompatActivity() {
                 recyclerViewAdapter.onItemClick = {
                     val intent = Intent(this, AttendanceActivity::class.java)
                     intent.putExtra("class", it)
+                    intent.putExtra("course", course)
                     startActivity(intent)
                 }
             }
