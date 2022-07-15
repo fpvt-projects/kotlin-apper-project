@@ -19,8 +19,7 @@ class MainActivity : AppCompatActivity() {
     private var mAuth = FirebaseAuth.getInstance()
     private lateinit var binding: ActivityMainBinding
     private lateinit var recyclerViewAdapter: CourseAdapter
-    private var courseList = ArrayList<Course>()
-
+    private lateinit var courseList : ArrayList<Course>
     private val id = FirebaseAuth.getInstance().currentUser?.uid.toString()
     private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
@@ -32,10 +31,13 @@ class MainActivity : AppCompatActivity() {
         getInstructorName()
         getCourses()
 
-        recyclerViewAdapter = CourseAdapter(applicationContext, courseList)
-        binding.recyclerviewCourses.adapter = recyclerViewAdapter
-        binding.recyclerviewCourses.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-
+        //swipe refresh
+        binding.refresh.setOnRefreshListener {
+            if (binding.refresh.isRefreshing) {
+                binding.refresh.isRefreshing = false
+            }
+            getCourses()
+        }
 
         //ADD-COURSE-FUNCTION
         binding.buttonAddCourse.setOnClickListener{
@@ -71,15 +73,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getCourses() {
+        courseList = ArrayList()
         db.collection("courses").whereEqualTo("userID", id).get()
             .addOnSuccessListener { courses ->
                 for (course in courses) {
                     courseList.add(Course(course.data.get("courseID").toString(),
-                        course.data.get("courseName").toString(),
-                        course.data.get("courseStartTime").toString(),
-                        course.data.get("courseEndTime").toString(),
-                        course.data.get("courseClass").toString()))
-
+                        course.data["courseName"].toString(),
+                        course.data["courseStartTime"].toString(),
+                        course.data["courseEndTime"].toString(),
+                        course.data["courseClass"].toString()))
+                }
+                recyclerViewAdapter = CourseAdapter(applicationContext, courseList)
+                binding.recyclerviewCourses.adapter = recyclerViewAdapter
+                binding.recyclerviewCourses.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+                
                     Toast.makeText(
                         this@MainActivity,
                         course.data.get("courseName").toString(),
@@ -87,6 +94,12 @@ class MainActivity : AppCompatActivity() {
                     ).show()
 
                     recyclerViewAdapter.setCourses(courseList)
+
+                recyclerViewAdapter.onItemClick = {
+                    val intent = Intent(this, CourseActivity::class.java)
+                    intent.putExtra("course", it)
+                    startActivity(intent)
+
                 }
             }
     }

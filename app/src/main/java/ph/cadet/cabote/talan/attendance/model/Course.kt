@@ -1,28 +1,37 @@
 package ph.cadet.cabote.talan.attendance.model
-import com.google.gson.annotations.SerializedName
-import java.time.LocalTime
 
-class Course {
-    @SerializedName("courseID")
-    var courseID = ""
+import android.os.Parcel
+import android.os.Parcelable
 
-    @SerializedName("courseName")
-    var courseName = ""
+class Course (var courseID: String = "", var courseName: String = "", var courseStartTime: String = "", var courseEndTime: String = "", var courseClass: String = ""): Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!
+    ) {
+    }
 
-    @SerializedName("courseStartTime")
-    var courseStartTime = ""
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(courseID)
+        parcel.writeString(courseName)
+        parcel.writeString(courseStartTime)
+        parcel.writeString(courseEndTime)
+        parcel.writeString(courseClass)
+    }
 
-    @SerializedName("courseEndTime")
-    var courseEndTime = ""
+    override fun describeContents(): Int {
+        return 0
+    }
 
-    @SerializedName("courseClass")
-    var courseClass = ""
+    companion object CREATOR : Parcelable.Creator<Course> {
+        override fun createFromParcel(parcel: Parcel): Course {
+            return Course(parcel)
+        }
 
-    constructor(courseID: String, courseName: String, courseStartTime: String, courseEndTime: String, courseClass: String){
-        this.courseID = courseID
-        this.courseName = courseName
-        this.courseStartTime = courseStartTime
-        this.courseEndTime = courseEndTime
-        this.courseClass = courseClass
+        override fun newArray(size: Int): Array<Course?> {
+            return arrayOfNulls(size)
+        }
     }
 }
