@@ -172,7 +172,7 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="150dp"
             android:layout_weight="0.1"
             android:background="@color/thirdColor"
             android:orientation="vertical">
@@ -202,7 +202,7 @@
                 <LinearLayout
                     android:id="@+id/linearLayout_date"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="30dp"
                     android:orientation="horizontal"
                     android:background="#FAF3E3"
                     android:weightSum="2">
@@ -230,10 +230,10 @@
                     <TextView
                         android:id="@+id/textView_totalAttendees"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:text="Students-Attended:"
                         android:background="#FAF3E3"
                         android:layout_weight="1"
+                        android:layout_height="30dp"
                         android:fontFamily="@font/robotothin"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintStart_toStartOf="parent"/>
@@ -241,7 +241,7 @@
                     <TextView
                         android:id="@+id/textView_total"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
                         android:text="Students-Attended:"
                         android:background="#FAF3E3"
                         android:layout_weight="1"
