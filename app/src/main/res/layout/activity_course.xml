@@ -42,8 +42,8 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:gravity="center"
                         android:textAllCaps="true"
-                        android:fontFamily="@font/robotomedium"
-                        android:textSize="10dp"
+                        android:fontFamily="@font/robotothin"
+                        android:textSize="13dp"
                         app:layout_constraintRight_toRightOf="parent"/>
 
                     <TextView
