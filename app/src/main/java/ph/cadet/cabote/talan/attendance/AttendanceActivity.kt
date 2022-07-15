@@ -31,6 +31,12 @@ class AttendanceActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         classObject = intent.getParcelableExtra<Classes>("class")!!
+
+        binding.textViewClassBlock.text = classObject.classBlock
+        binding.textViewClassDate.text = classObject.date
+        binding.textViewTotal.text = classObject.totalAttendees.toString()
+
+        classObject = intent.getParcelableExtra<Classes>("class")!!
         course = intent.getParcelableExtra<Course>("course")!!
 
         getAttendance()

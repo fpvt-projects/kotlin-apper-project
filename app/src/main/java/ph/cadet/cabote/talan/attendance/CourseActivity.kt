@@ -12,6 +12,7 @@ import ph.cadet.cabote.talan.attendance.adapter.CourseAdapter
 import ph.cadet.cabote.talan.attendance.databinding.ActivityCourseBinding
 import ph.cadet.cabote.talan.attendance.databinding.ActivityMainBinding
 import ph.cadet.cabote.talan.attendance.databinding.CourseViewBinding
+import ph.cadet.cabote.talan.attendance.model.Attendance
 import ph.cadet.cabote.talan.attendance.model.Classes
 import ph.cadet.cabote.talan.attendance.model.Course
 
@@ -62,12 +63,25 @@ class CourseActivity : AppCompatActivity() {
     private fun getClasses() {
         classList = ArrayList()
 
+
         db.collection("classes").whereEqualTo("userID", id).get()
             .addOnSuccessListener { classes ->
                 for (classItem in classes) {
                     if (classItem.data["courseID"].toString().equals(course.courseID)) {
+
+                        var totalAttendees = 0
+                            db.collection("attendance").whereEqualTo("courseID", course.courseID).get()
+                            .addOnSuccessListener { attendanceList ->
+                            var attendees = 0
+                                for (item in attendanceList) {
+                                    if (item.data["date"].toString().equals(classItem.data["classDate"])) {
+                                        attendees += 1
+                                    }
+                                }
+                                totalAttendees = attendees
+                            }
                         classList.add(Classes(classItem.data["classBlock"].toString(),
-                            classItem.data["classDate"].toString(), 0
+                            classItem.data["classDate"].toString(), totalAttendees
                         ))
                     }
                 }

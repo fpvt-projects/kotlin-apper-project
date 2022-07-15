@@ -52,7 +52,6 @@
             android:orientation="horizontal"
             android:weightSum="2">
 
-
             <TextView
                 android:id="@+id/textView_totalAttendees"
                 android:layout_width="match_parent"
