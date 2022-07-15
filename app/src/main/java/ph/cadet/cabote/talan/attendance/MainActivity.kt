@@ -86,14 +86,6 @@ class MainActivity : AppCompatActivity() {
                 recyclerViewAdapter = CourseAdapter(applicationContext, courseList)
                 binding.recyclerviewCourses.adapter = recyclerViewAdapter
                 binding.recyclerviewCourses.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-                
-                    Toast.makeText(
-                        this@MainActivity,
-                        course.data.get("courseName").toString(),
-                        Toast.LENGTH_SHORT
-                    ).show()
-
-                    recyclerViewAdapter.setCourses(courseList)
 
                 recyclerViewAdapter.onItemClick = {
                     val intent = Intent(this, CourseActivity::class.java)
